@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::view('/newest', 'newest')->name('newest');
+
+Route::get('/signup', [UserController::class, 'create'])->name('signup');
+
+Route::resource('users',  UserController::class);
