@@ -2,3 +2,7 @@
     max-width:80px;
     border-radius: 50%;
 }
+
+.small_font {
+    font-size: small;
+}
