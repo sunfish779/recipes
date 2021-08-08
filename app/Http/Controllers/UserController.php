@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class UserController extends Controller
 {
@@ -43,9 +44,9 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->passwword),
+            'password' => bcrypt($request->password),
         ]);
-
+        Auth::login($user);
         session()->flash('success', '注册成功，欢迎体验真正的中华美食！');
         return redirect()->route('users.show',[$user]);
     }
@@ -92,6 +93,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+
     }
 }
