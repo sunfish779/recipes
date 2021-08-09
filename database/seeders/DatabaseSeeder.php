@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,16 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        DB::table('recipes')->insert([
-            'recipe_name' => '糖醋排骨',
-            'kind_id' => 1,
-        ]);
-        DB::table('kinds')->insert([
-            'kind_name' => '凉拌小菜',
-        ]);
-        DB::table('kinds')->insert([
-            'kind_name' => '中式小吃',
-        ]);
+        Model::unguard();
+        $this->call(UsersTableSeeder::class);
+        Model::reguard();
     }
 }
